@@ -38,6 +38,20 @@
             opacity: 1;
             transform: none;
         }
+        #left, #right{
+            font-size: 40px;
+            line-height: 40px;
+            color: #ffffff;
+            position: absolute;
+            top: 230px;
+            z-index: 2;
+        }
+        #left{
+            left: 50px;
+        }
+        #right{
+            right: 50px;
+        }
     </style>
 </head>
 <body>
@@ -58,6 +72,8 @@
             <h1>5</h1>
         </div>
     </div>
+    <button id="left">&lt;</button>
+    <button id="right">&gt;</button>
 
     <script>
         const SHOWING_CLASS = "showing";
