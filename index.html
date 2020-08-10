@@ -76,13 +76,32 @@
     <button id="right">&gt;</button>
 
     <script>
-        const SHOWING_CLASS = "showing";
-        const firstSlide = document.querySelector(".slider_item:first-child");
-        function slide()  {
+        const SHOWING_CLASS = "showing";  
+        const leftBtn = document.querySelector("#left");
+        const rightBtn = document.querySelector("#right");
+        
+        var left = function() {
             const currentSlide = document.querySelector(`.${SHOWING_CLASS}`);
+            const lastSlide = document.querySelector(".slider_item:last-child");
             if(currentSlide) {
                 currentSlide.classList.remove(SHOWING_CLASS);
-                const nextSlide = currentSlide.nextElementSibling;
+                const prevSlide = currentSlide.previousElementSibling;
+                if(prevSlide){
+                    prevSlide.classList.add(SHOWING_CLASS);
+                } else {
+                    lastSlide.classList.add(SHOWING_CLASS);
+                }
+                } else {
+                    lastSlide.classList.add(SHOWING_CLASS);
+                }
+        }
+
+        var right = function() {
+            const currentSlide = document.querySelector(`.${SHOWING_CLASS}`);
+            const firstSlide = document.querySelector(".slider_item:first-child");
+            if(currentSlide) {
+                currentSlide.classList.remove(SHOWING_CLASS);
+                const nextSlide = currentSlide.nextElementSibling;    
                 if(nextSlide){
                     nextSlide.classList.add(SHOWING_CLASS);
                 } else {
@@ -92,8 +111,9 @@
                     firstSlide.classList.add(SHOWING_CLASS);
                 }
         }
-        slide();
-        setInterval(slide, 2000);
+        
+        leftBtn.addEventListener("click", left);
+        rightBtn.addEventListener("click", right);
 
     </script>
 </body>
