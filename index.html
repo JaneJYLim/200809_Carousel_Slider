@@ -39,9 +39,17 @@
             transform: none;
         }
         #left, #right{
+            width: 40px;
+            height: 40px;
+            color: #fff;
             font-size: 40px;
             line-height: 40px;
-            color: #ffffff;
+            border: none;
+            background: rgba(0,0,0,0);
+            border-radius: 30px;
+            outline: none;
+            cursor: pointer;
+            
             position: absolute;
             top: 230px;
             z-index: 2;
@@ -114,6 +122,25 @@
         
         leftBtn.addEventListener("click", left);
         rightBtn.addEventListener("click", right);
+        
+        function slide(){
+         const currentSlide = document.querySelector(`.${SHOWING_CLASS}`);
+            const firstSlide = document.querySelector(".slider_item:first-child");
+            if(currentSlide) {
+                currentSlide.classList.remove(SHOWING_CLASS);
+                const nextSlide = currentSlide.nextElementSibling;    
+                if(nextSlide){
+                    nextSlide.classList.add(SHOWING_CLASS);
+                } else {
+                    firstSlide.classList.add(SHOWING_CLASS);
+                }
+                } else {
+                    firstSlide.classList.add(SHOWING_CLASS);
+                }
+        }
+        
+      slide();
+        setInterval(slide, 5000);
 
     </script>
 </body>
